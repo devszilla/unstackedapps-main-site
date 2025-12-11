@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Chrome, Sparkles, Zap, Code, Rocket, Mail, ExternalLink, Github, Globe } from "lucide-react"
 import { SITE_CONFIG } from "@/config/constants"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { technologiesByCategory } from "@/config/technologies"
 
 function App() {
   return (
@@ -234,6 +235,41 @@ function App() {
                 </CardDescription>
               </CardHeader>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Technologies We Use
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Modern, well-supported open source tools powering our applications
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+            {technologiesByCategory.map((category) => (
+              <div key={category.name} className="w-full max-w-sm">
+                <h3 className="text-lg font-semibold mb-3 text-center">{category.name}</h3>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {category.technologies.map((tech) => (
+                    <a
+                      key={tech.name}
+                      href={tech.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground text-xs hover:bg-secondary/80 transition-colors"
+                    >
+                      {tech.name}
+                      <ExternalLink className="h-3 w-3 opacity-60" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
