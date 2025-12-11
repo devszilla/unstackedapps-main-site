@@ -13,5 +13,5 @@ export default defineConfig({
   // For GitHub Pages, use the repository name as base path
   // Set VITE_BASE_PATH environment variable or it defaults to '/'
   // Example: VITE_BASE_PATH=/unstackedapps-main-site/ npm run build
-  base: process.env.VITE_BASE_PATH || '/',
+  base: process.env.VITE_BASE_PATH || (process.env.NODE_ENV === 'production' ? '/unstackedapps-main-site/' : '/'),
 })
