@@ -71,13 +71,13 @@ function App() {
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
+              <CardHeader className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <Chrome className="h-8 w-8 text-primary" />
                   <CardTitle className="text-2xl">SuitePreferences</CardTitle>
                 </div>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base min-h-[3rem]">
                   A Chrome extension that enhances your NetSuite experience with customizable preferences and productivity features.
                 </CardDescription>
               </CardHeader>
@@ -101,13 +101,13 @@ function App() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
+              <CardHeader className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <Sparkles className="h-8 w-8 text-primary" />
                   <CardTitle className="text-2xl">OpenSuiteMCP</CardTitle>
                 </div>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base min-h-[3rem]">
                   An open-source AI assistant for NetSuite that helps you work smarter with intelligent automation and insights.
                 </CardDescription>
               </CardHeader>
@@ -133,13 +133,13 @@ function App() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
+            <Card className="hover:shadow-lg transition-shadow flex flex-col">
+              <CardHeader className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <Globe className="h-8 w-8 text-primary" />
                   <CardTitle className="text-2xl">This Website</CardTitle>
                 </div>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base min-h-[3rem]">
                   A production-ready single-page application built with React, Vite, and Tailwind CSS. Deployed on GitHub Pages with a custom domain.
                 </CardDescription>
               </CardHeader>
