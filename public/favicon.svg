@@ -1,10 +1,10 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
     .block { width: 40px; height: 40px; } /* Base dimensions class */
-    .block-1 { fill: #1D3557; } /* Top Left */
-    .block-2 { fill: #1D3557; } /* Middle Left */
-    .block-3 { fill: #1D3557; } /* Middle Bottom */
-    .block-4 { fill: #1D3557; } /* Rotated Block */
+    .block-1 { fill: #333333; } /* Top Left */
+    .block-2 { fill: #333333; } /* Middle Left */
+    .block-3 { fill: #333333; } /* Middle Bottom */
+    .block-4 { fill: #333333; } /* Rotated Block */
   </style>
   <g transform="translate(-10, -6.6)">
     <mask id="mask4">

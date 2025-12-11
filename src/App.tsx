@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Chrome, Sparkles, Zap, Code, Rocket, Mail, ExternalLink, Github } from "lucide-react"
+import { Chrome, Sparkles, Zap, Code, Rocket, Mail, ExternalLink, Github, Globe } from "lucide-react"
+import { SITE_CONFIG } from "@/config/constants"
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             </div>
           </div>
           <Button variant="outline" asChild>
-            <a href="mailto:contact@unstackedapps.com">
+            <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
               <Mail className="mr-2 h-4 w-4" />
               Contact
             </a>
@@ -36,16 +37,16 @@ function App() {
           <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
             Building Apps That
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {" "}Simplify Your Life
+              {" "}Meet Your Needs
             </span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
-            We create powerful Chrome extensions and AI assistants that enhance your productivity
+            Let us create powerful Chrome extensions, AI assistants, and single-page applications that enhance your productivity
             and streamline your workflow. Modern tools for modern professionals.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button size="lg" className="text-lg" asChild>
-              <a href="#apps">Explore Our Apps</a>
+              <a href="#apps">Explore Our Projects</a>
             </Button>
             <Button size="lg" variant="outline" className="text-lg" asChild>
               <a href="#features">Learn More</a>
@@ -59,13 +60,13 @@ function App() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Our Apps
+              Projects
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Powerful tools built specifically for NetSuite users
+              Powerful tools and modern web applications
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-4">
@@ -127,6 +128,38 @@ function App() {
                 </div>
               </CardContent>
             </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-4">
+                  <Globe className="h-8 w-8 text-primary" />
+                  <CardTitle className="text-2xl">This Website</CardTitle>
+                </div>
+                <CardDescription className="text-base">
+                  A production-ready single-page application built with React, Vite, and Tailwind CSS. Deployed on GitHub Pages with a custom domain.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
+                    <span className="px-2 py-1 bg-secondary rounded-md">React</span>
+                    <span className="px-2 py-1 bg-secondary rounded-md">SPA</span>
+                    <span className="px-2 py-1 bg-secondary rounded-md">GitHub Pages</span>
+                  </div>
+                  <Button asChild variant="outline" className="w-full sm:w-auto">
+                    <a 
+                      href="https://www.unstackedapps.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <Globe className="mr-2 h-4 w-4" />
+                      Visit Site
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -139,7 +172,7 @@ function App() {
               What We Build
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Innovative solutions designed to make your digital life easier
+              Chrome extensions, AI assistants, and single-page applications designed to make your digital life easier
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -158,6 +191,15 @@ function App() {
                 <CardTitle>AI Assistants</CardTitle>
                 <CardDescription>
                   Intelligent AI-powered tools that help you work smarter and accomplish more
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader>
+                <Globe className="h-10 w-10 text-primary mb-4" />
+                <CardTitle>Single-Page Applications</CardTitle>
+                <CardDescription>
+                  Fast, modern SPAs built with React, deployed on GitHub Pages with custom domains. Quick to production.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -182,18 +224,9 @@ function App() {
             <Card>
               <CardHeader>
                 <Rocket className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Innovation First</CardTitle>
+                <CardTitle>Open Source Powered</CardTitle>
                 <CardDescription>
-                  We stay ahead of the curve, using the latest tools and best practices
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Mail className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Support & Updates</CardTitle>
-                <CardDescription>
-                  Regular updates and dedicated support to ensure your tools always work perfectly
+                  Built with highly supported open source tools and best practices for reliability and maintainability
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -213,10 +246,10 @@ function App() {
             </CardHeader>
             <CardContent className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" className="text-lg" asChild>
-                <a href="#apps">View Our Apps</a>
+                <a href="#apps">View Our Projects</a>
               </Button>
               <Button size="lg" variant="outline" className="text-lg" asChild>
-                <a href="mailto:contact@unstackedapps.com">
+                <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Us
                 </a>
@@ -234,18 +267,17 @@ function App() {
               <img 
                 src="/logo.svg" 
                 alt="Unstacked Apps" 
-                className="brand-logo"
-                style={{ height: '24px' }}
+                className="brand-logo brand-logo-footer"
               />
-              <div className="brand-container" style={{ height: '24px' }}>
-                <span className="brand-name" style={{ fontSize: '18px' }}>
+              <div className="brand-container brand-container-footer">
+                <span className="brand-name brand-name-footer">
                   <span className="brand-name-thin">un</span>stacked
                 </span>
-                <span className="brand-subtitle" style={{ fontSize: '9px', marginTop: '-3px' }}>apps</span>
+                <span className="brand-subtitle brand-subtitle-footer">apps</span>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Unstacked Apps LLC. All rights reserved.
+              © {new Date().getFullYear()} {SITE_CONFIG.companyName}. All rights reserved.
             </p>
           </div>
         </div>
