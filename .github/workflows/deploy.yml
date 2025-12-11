@@ -35,8 +35,8 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          # Update this to match your repository name
-          VITE_BASE_PATH: /unstackedapps-main-site/
+          # Use '/' for custom domain, or '/repository-name/' for default GitHub Pages
+          VITE_BASE_PATH: /
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
