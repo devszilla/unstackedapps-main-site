@@ -21,6 +21,14 @@
     <meta property="twitter:title" content="Unstacked Apps - Chrome Extensions & AI Assistants" />
     <meta property="twitter:description" content="Building Chrome extensions and AI assistants that simplify your life. SuitePreferences and OpenSuiteMCP for NetSuite users." />
     <title>Unstacked Apps - Chrome Extensions & AI Assistants</title>
+    <script>
+      (function() {
+        const theme = localStorage.getItem('unstackedapps-theme') || 'system';
+        if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

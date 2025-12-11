@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Chrome, Sparkles, Zap, Code, Rocket, Mail, ExternalLink, Github, Globe } from "lucide-react"
 import { SITE_CONFIG } from "@/config/constants"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 function App() {
   return (
@@ -22,12 +23,15 @@ function App() {
               <span className="brand-subtitle">apps</span>
             </div>
           </div>
-          <Button variant="outline" asChild>
-            <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
-              <Mail className="mr-2 h-4 w-4" />
-              Contact
-            </a>
-          </Button>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button variant="outline" asChild>
+              <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
+                <Mail className="mr-2 h-4 w-4" />
+                Contact
+              </a>
+            </Button>
+          </div>
         </div>
       </nav>
 
