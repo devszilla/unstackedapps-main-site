@@ -79,6 +79,18 @@
     display: flex;
     align-items: center;
     gap: 0px;
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+  }
+
+  .brand-wrapper:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s;
   }
 
   .brand-name {
@@ -105,20 +117,20 @@
     margin-top: -5px;
     padding-right: 5px;
   }
-  
+
   /* Footer brand sizes */
   .brand-logo-footer {
     height: 32px;
   }
-  
+
   .brand-container-footer {
     height: 32px;
   }
-  
+
   .brand-name-footer {
     font-size: 24px;
   }
-  
+
   .brand-subtitle-footer {
     font-size: 12px;
     margin-top: -4px;

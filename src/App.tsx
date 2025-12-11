@@ -10,7 +10,7 @@ function App() {
       {/* Navigation */}
       <nav className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          <div className="brand-wrapper">
+          <a href="/" className="brand-wrapper">
             <img 
               src="/logo.svg" 
               alt="Unstacked Apps" 
@@ -22,7 +22,7 @@ function App() {
               </span>
               <span className="brand-subtitle">apps</span>
             </div>
-          </div>
+          </a>
           <div className="flex items-center gap-3">
             <ThemeToggle />
             <Button variant="outline" asChild>
@@ -267,7 +267,7 @@ function App() {
       <footer className="border-t py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="brand-wrapper">
+            <a href="/" className="brand-wrapper">
               <img 
                 src="/logo.svg" 
                 alt="Unstacked Apps" 
@@ -279,7 +279,7 @@ function App() {
                 </span>
                 <span className="brand-subtitle brand-subtitle-footer">apps</span>
               </div>
-            </div>
+            </a>
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} {SITE_CONFIG.companyName}. All rights reserved.
             </p>
