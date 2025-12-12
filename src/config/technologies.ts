@@ -13,6 +13,7 @@ export interface TechnologyCategory {
 export const technologies: Technology[] = [
   // Core Framework & Runtime
   { name: "React", url: "https://react.dev", category: "Frontend" },
+  { name: "React Router", url: "https://reactrouter.com", category: "Frontend" },
   { name: "Next.js", url: "https://nextjs.org", category: "Frontend" },
   { name: "Vite", url: "https://vitejs.dev", category: "Build Tools" },
   { name: "TypeScript", url: "https://www.typescriptlang.org", category: "Language" },
