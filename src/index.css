@@ -89,6 +89,11 @@
     display: block;
     margin-top: 3px; /* Adjust for lowercase visual center */
   }
+  
+  /* Make logo lighter/white in dark mode */
+  .dark .brand-logo {
+    filter: brightness(0) invert(1);
+  }
 
   .brand-wrapper {
     display: flex;
