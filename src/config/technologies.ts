@@ -25,6 +25,7 @@ export const technologies: Technology[] = [
   { name: "Radix UI", url: "https://www.radix-ui.com", category: "UI Components" },
   { name: "Framer Motion", url: "https://www.framer.com/motion", category: "Animation" },
   { name: "Lucide React", url: "https://lucide.dev", category: "Icons" },
+  { name: "react-day-picker", url: "https://react-day-picker.js.org", category: "UI Components" },
   { name: "class-variance-authority", url: "https://cva.style", category: "Utilities" },
   { name: "clsx", url: "https://github.com/lukeed/clsx", category: "Utilities" },
   { name: "tailwind-merge", url: "https://github.com/dcastil/tailwind-merge", category: "Utilities" },
