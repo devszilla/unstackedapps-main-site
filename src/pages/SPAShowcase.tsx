@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowLeft, Users, Building2, FileText, Mail, Phone, MapPin, Briefcase, GraduationCap, Globe, Linkedin, Github } from "lucide-react"
 import { Link } from "react-router-dom"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { MobileMenu } from "@/components/MobileMenu"
 
 type SPAType = "user-management" | "company-profile" | "professional-resume"
 
@@ -29,14 +30,26 @@ export function SPAShowcase() {
             </div>
           </Link>
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            <ThemeToggle />
-            <Button variant="outline" size="sm" className="sm:size-default whitespace-nowrap" asChild>
-              <Link to="/">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                <span className="hidden sm:inline">Back to Home</span>
-                <span className="sm:hidden">Home</span>
-              </Link>
-            </Button>
+            {/* Desktop menu */}
+            <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle />
+              <Button variant="outline" size="sm" className="sm:size-default whitespace-nowrap" asChild>
+                <Link to="/">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Home
+                </Link>
+              </Button>
+            </div>
+            {/* Mobile menu */}
+            <div className="md:hidden flex items-center gap-2">
+              <MobileMenu />
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Home
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </nav>

@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Chrome, Sparkles, Zap, Code, Rocket, Mail, ExternalLink, Github, Globe } from "lucide-react"
 import { SITE_CONFIG } from "@/config/constants"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { MobileMenu } from "@/components/MobileMenu"
 import { technologiesByCategory } from "@/config/technologies"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
@@ -57,13 +58,18 @@ export function Home() {
             </div>
           </Link>
           <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Button variant="outline" asChild>
-              <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
-                <Mail className="mr-2 h-4 w-4" />
-                Contact
-              </a>
-            </Button>
+            {/* Desktop menu */}
+            <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle />
+              <Button variant="outline" asChild>
+                <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Contact
+                </a>
+              </Button>
+            </div>
+            {/* Mobile menu */}
+            <MobileMenu />
           </div>
         </div>
       </motion.nav>
