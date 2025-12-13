@@ -5,12 +5,43 @@ import { SITE_CONFIG } from "@/config/constants"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { technologiesByCategory } from "@/config/technologies"
 import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+}
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+}
 
 export function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Navigation */}
-      <nav className="container mx-auto px-4 py-6">
+      <motion.nav 
+        className="container mx-auto px-4 py-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         <div className="flex items-center justify-between">
           <Link to="/" className="brand-wrapper">
             <img 
@@ -35,220 +66,292 @@ export function Home() {
             </Button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
-        <div className="mx-auto max-w-3xl">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+        <motion.div 
+          className="mx-auto max-w-3xl"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.h1 
+            className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl"
+            variants={fadeInUp}
+          >
             Building Apps That
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {" "}Meet Your Needs
             </span>
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
+          </motion.h1>
+          <motion.p 
+            className="mt-6 text-lg text-muted-foreground sm:text-xl"
+            variants={fadeInUp}
+          >
             Let us create powerful Chrome extensions, AI assistants, and single-page applications that enhance your productivity
             and streamline your workflow. Modern tools for modern professionals.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          </motion.p>
+          <motion.div 
+            className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center"
+            variants={fadeInUp}
+          >
             <Button size="lg" className="text-lg" asChild>
               <a href="#projects">Explore Our Projects</a>
             </Button>
             <Button size="lg" variant="outline" className="text-lg" asChild>
               <a href="#features">Learn More</a>
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="container mx-auto px-4 py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Projects
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Powerful tools and modern web applications
             </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="hover:shadow-lg transition-shadow flex flex-col">
-              <CardHeader className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <Chrome className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-2xl">SuitePreferences</CardTitle>
-                </div>
-                <CardDescription className="text-base min-h-[3rem]">
-                  A Chrome extension that enhances your NetSuite experience with customizable preferences and productivity features.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="px-2 py-1 bg-secondary rounded-md">Chrome Extension</span>
-                    <span className="px-2 py-1 bg-secondary rounded-md">NetSuite</span>
+          </motion.div>
+          <motion.div 
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="hover:shadow-lg transition-shadow flex flex-col h-full">
+                <CardHeader className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Chrome className="h-8 w-8 text-primary" />
+                    <CardTitle className="text-2xl">SuitePreferences</CardTitle>
                   </div>
-                  <Button asChild className="w-full sm:w-auto">
-                    <a 
-                      href="https://chromewebstore.google.com/detail/suitepreferences/gdaohblaiiefllpkhpolbfeiacbpommo" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      Get from Chrome Web Store
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                  <CardDescription className="text-base min-h-[3rem]">
+                    A Chrome extension that enhances your NetSuite experience with customizable preferences and productivity features.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="px-2 py-1 bg-secondary rounded-md">Chrome Extension</span>
+                      <span className="px-2 py-1 bg-secondary rounded-md">NetSuite</span>
+                    </div>
+                    <Button asChild className="w-full sm:w-auto">
+                      <a 
+                        href="https://chromewebstore.google.com/detail/suitepreferences/gdaohblaiiefllpkhpolbfeiacbpommo" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        Get from Chrome Web Store
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="hover:shadow-lg transition-shadow flex flex-col">
-              <CardHeader className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <Sparkles className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-2xl">OpenSuiteMCP</CardTitle>
-                </div>
-                <CardDescription className="text-base min-h-[3rem]">
-                  An open-source AI assistant for NetSuite that helps you work smarter with intelligent automation and insights.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="px-2 py-1 bg-secondary rounded-md">AI Assistant</span>
-                    <span className="px-2 py-1 bg-secondary rounded-md">Open Source</span>
-                    <span className="px-2 py-1 bg-secondary rounded-md">NetSuite</span>
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="hover:shadow-lg transition-shadow flex flex-col h-full">
+                <CardHeader className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Sparkles className="h-8 w-8 text-primary" />
+                    <CardTitle className="text-2xl">OpenSuiteMCP</CardTitle>
                   </div>
-                  <Button asChild variant="outline" className="w-full sm:w-auto">
-                    <a 
-                      href="https://github.com/opensuitemcp/opensuitemcp" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      View on GitHub
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                  <CardDescription className="text-base min-h-[3rem]">
+                    An open-source AI assistant for NetSuite that helps you work smarter with intelligent automation and insights.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="px-2 py-1 bg-secondary rounded-md">AI Assistant</span>
+                      <span className="px-2 py-1 bg-secondary rounded-md">Open Source</span>
+                      <span className="px-2 py-1 bg-secondary rounded-md">NetSuite</span>
+                    </div>
+                    <Button asChild variant="outline" className="w-full sm:w-auto">
+                      <a 
+                        href="https://github.com/opensuitemcp/opensuitemcp" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        <Github className="mr-2 h-4 w-4" />
+                        View on GitHub
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="hover:shadow-lg transition-shadow flex flex-col">
-              <CardHeader className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <Globe className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-2xl">This Website</CardTitle>
-                </div>
-                <CardDescription className="text-base min-h-[3rem]">
-                  A production-ready single-page application built with React, Vite, and Tailwind CSS. Deployed on GitHub Pages with a custom domain.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
-                    <span className="px-2 py-1 bg-secondary rounded-md">React</span>
-                    <span className="px-2 py-1 bg-secondary rounded-md">SPA</span>
-                    <span className="px-2 py-1 bg-secondary rounded-md">GitHub Pages</span>
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="hover:shadow-lg transition-shadow flex flex-col h-full">
+                <CardHeader className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Globe className="h-8 w-8 text-primary" />
+                    <CardTitle className="text-2xl">This Website</CardTitle>
                   </div>
-                  <Button asChild variant="outline" className="w-full sm:w-auto">
-                    <Link to="/spa-showcase">
-                      <Globe className="mr-2 h-4 w-4" />
-                      View SPA Examples
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                  <CardDescription className="text-base min-h-[3rem]">
+                    A production-ready single-page application built with React, Vite, and Tailwind CSS. Deployed on GitHub Pages with a custom domain.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
+                      <span className="px-2 py-1 bg-secondary rounded-md">React</span>
+                      <span className="px-2 py-1 bg-secondary rounded-md">SPA</span>
+                      <span className="px-2 py-1 bg-secondary rounded-md">GitHub Pages</span>
+                    </div>
+                    <Button asChild variant="outline" className="w-full sm:w-auto">
+                      <Link to="/spa-showcase">
+                        <Globe className="mr-2 h-4 w-4" />
+                        View SPA Examples
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Features Section */}
       <section id="features" className="container mx-auto px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               What We Build
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Chrome extensions, AI assistants, and single-page applications designed to make your digital life easier
             </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Card>
-              <CardHeader>
-                <Chrome className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Chrome Extensions</CardTitle>
-                <CardDescription>
-                  Powerful browser extensions that enhance your web experience and boost productivity
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Sparkles className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>AI Assistants</CardTitle>
-                <CardDescription>
-                  Intelligent AI-powered tools that help you work smarter and accomplish more
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Globe className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Single-Page Applications</CardTitle>
-                <CardDescription>
-                  Fast, modern SPAs built with React, deployed on GitHub Pages with custom domains. Quick to production.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Zap className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Fast & Reliable</CardTitle>
-                <CardDescription>
-                  Built with modern technologies for speed, security, and seamless user experience
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Code className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Clean Code</CardTitle>
-                <CardDescription>
-                  Well-architected solutions that are maintainable, scalable, and future-proof
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Rocket className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Open Source Powered</CardTitle>
-                <CardDescription>
-                  Built with highly supported open source tools and best practices for reliability and maintainability
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
+          </motion.div>
+          <motion.div 
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="h-full">
+                <CardHeader>
+                  <Chrome className="h-10 w-10 text-primary mb-4" />
+                  <CardTitle>Chrome Extensions</CardTitle>
+                  <CardDescription>
+                    Powerful browser extensions that enhance your web experience and boost productivity
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="h-full">
+                <CardHeader>
+                  <Sparkles className="h-10 w-10 text-primary mb-4" />
+                  <CardTitle>AI Assistants</CardTitle>
+                  <CardDescription>
+                    Intelligent AI-powered tools that help you work smarter and accomplish more
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="h-full">
+                <CardHeader>
+                  <Globe className="h-10 w-10 text-primary mb-4" />
+                  <CardTitle>Single-Page Applications</CardTitle>
+                  <CardDescription>
+                    Fast, modern SPAs built with React, deployed on GitHub Pages with custom domains. Quick to production.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="h-full">
+                <CardHeader>
+                  <Zap className="h-10 w-10 text-primary mb-4" />
+                  <CardTitle>Fast & Reliable</CardTitle>
+                  <CardDescription>
+                    Built with modern technologies for speed, security, and seamless user experience
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="h-full">
+                <CardHeader>
+                  <Code className="h-10 w-10 text-primary mb-4" />
+                  <CardTitle>Clean Code</CardTitle>
+                  <CardDescription>
+                    Well-architected solutions that are maintainable, scalable, and future-proof
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
+            <motion.div variants={cardVariants} className="h-full">
+              <Card className="h-full">
+                <CardHeader>
+                  <Rocket className="h-10 w-10 text-primary mb-4" />
+                  <CardTitle>Open Source Powered</CardTitle>
+                  <CardDescription>
+                    Built with highly supported open source tools and best practices for reliability and maintainability
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Technologies Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Technologies We Use
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Modern, well-supported open source tools powering our applications
             </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+          </motion.div>
+          <motion.div 
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {technologiesByCategory.map((category) => (
-              <div key={category.name} className="w-full max-w-sm">
+              <motion.div 
+                key={category.name} 
+                className="w-full max-w-sm"
+                variants={cardVariants}
+              >
                 <h3 className="text-lg font-semibold mb-3 text-center">{category.name}</h3>
                 <div className="flex flex-wrap gap-2 justify-center">
                   {category.technologies.map((tech) => (
@@ -264,15 +367,21 @@ export function Home() {
                     </a>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20">
-        <div className="mx-auto max-w-4xl">
+        <motion.div 
+          className="mx-auto max-w-4xl"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <Card className="border-2">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl">Ready to Get Started?</CardTitle>
@@ -292,7 +401,7 @@ export function Home() {
               </Button>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
       </section>
 
       {/* Footer */}
