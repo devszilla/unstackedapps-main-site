@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -65,6 +65,14 @@ function getCurrentDateTime(): string {
 
 export function SPAShowcase() {
   const [selectedSPA, setSelectedSPA] = useState<SPAType>("user-management")
+  
+  // Prevent scroll restoration on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
@@ -306,6 +314,16 @@ function UserManagementSPA() {
   useEffect(() => {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(users))
   }, [users])
+  
+  // Ref for the scrollable table container
+  const tableScrollRef = useRef<HTMLDivElement>(null)
+  
+  // Ensure table scrolls to top on mount
+  useEffect(() => {
+    if (tableScrollRef.current) {
+      tableScrollRef.current.scrollTop = 0
+    }
+  }, [])
 
   const handleAddUser = () => {
     const today = new Date()
@@ -955,7 +973,7 @@ function UserManagementSPA() {
           
           {/* Table with vertical scroll */}
           <div className="border rounded-lg overflow-hidden">
-            <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+            <div ref={tableScrollRef} className="overflow-x-auto max-h-[600px] overflow-y-auto">
               <table className="w-full" style={{ tableLayout: 'auto', minWidth: '100%' }}>
                 <thead className="bg-muted sticky top-0 z-10">
                   <tr>
