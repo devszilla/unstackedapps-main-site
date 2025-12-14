@@ -75,10 +75,20 @@ export function SPAShowcase() {
   
   // Prevent scroll restoration on page load
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Set immediately
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'
     }
+    // Force scroll to top multiple times to override browser restoration
+    window.scrollTo(0, 0)
+    // Use requestAnimationFrame to ensure it happens after browser restoration
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0)
+      // Also set on next frame for good measure
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0)
+      })
+    })
   }, [])
 
   return (
