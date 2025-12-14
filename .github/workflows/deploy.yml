@@ -37,6 +37,8 @@ jobs:
           NODE_ENV: production
           # Use '/' for custom domain, or '/repository-name/' for default GitHub Pages
           VITE_BASE_PATH: /
+          # Formspree endpoint for contact form (set in repository secrets)
+          VITE_FORMSPREE_ENDPOINT: ${{ secrets.VITE_FORMSPREE_ENDPOINT }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

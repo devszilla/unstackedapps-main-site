@@ -16,9 +16,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "@/hooks/use-theme"
-import { SITE_CONFIG } from "@/config/constants"
 import { Mail } from "lucide-react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false)
@@ -105,13 +105,13 @@ export function MobileMenu() {
             transition={{ duration: 0.3, delay: 0.2 }}
           >
             <Button variant="outline" className="w-full justify-start" asChild>
-              <a 
-                href={`mailto:${SITE_CONFIG.contactEmail}`}
+              <Link 
+                to="/contact"
                 onClick={() => setOpen(false)}
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Contact Us
-              </a>
+              </Link>
             </Button>
           </motion.div>
         </motion.div>

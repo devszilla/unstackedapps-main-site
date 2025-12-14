@@ -77,10 +77,10 @@ export function Home() {
             <div className="hidden md:flex items-center gap-3">
               <ThemeToggle />
               <Button variant="outline" asChild>
-                <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
+                <Link to="/contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact
-                </a>
+                </Link>
               </Button>
             </div>
             {/* Mobile menu */}
@@ -394,10 +394,10 @@ export function Home() {
                 <a href="#projects">View Our Projects</a>
               </Button>
               <Button size="lg" variant="outline" className="text-lg" asChild>
-                <a href={`mailto:${SITE_CONFIG.contactEmail}`}>
+                <Link to="/contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Us
-                </a>
+                </Link>
               </Button>
             </CardContent>
           </Card>
