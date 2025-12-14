@@ -86,26 +86,25 @@ export function Home() {
             className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl"
             variants={fadeInUp}
           >
-            Building Apps That
+            Apps. AI.
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {" "}Meet Your Needs
+              {" "}Open Source.
             </span>
           </motion.h1>
           <motion.p 
             className="mt-6 text-lg text-muted-foreground sm:text-xl"
             variants={fadeInUp}
           >
-            Let us create powerful Chrome extensions, AI assistants, and single-page applications that enhance your productivity
-            and streamline your workflow. Modern tools for modern professionals.
+            Chrome extensions, AI assistants, single-page applications and end-to-end integrations. Built with modern tools and open source technologies.
           </motion.p>
           <motion.div 
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center"
+            className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center items-center"
             variants={fadeInUp}
           >
-            <Button size="lg" className="text-lg" asChild>
+            <Button size="lg" className="text-lg w-auto" asChild>
               <a href="#projects">Explore Our Projects</a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg" asChild>
+            <Button size="lg" variant="outline" className="text-lg w-auto" asChild>
               <a href="#features">Learn More</a>
             </Button>
           </motion.div>
@@ -153,7 +152,7 @@ export function Home() {
                       <span className="px-2 py-1 bg-secondary rounded-md">Chrome Extension</span>
                       <span className="px-2 py-1 bg-secondary rounded-md">NetSuite</span>
                     </div>
-                    <Button asChild className="w-full sm:w-auto">
+                    <Button asChild variant="outline" className="w-full sm:w-auto">
                       <a 
                         href="https://chromewebstore.google.com/detail/suitepreferences/gdaohblaiiefllpkhpolbfeiacbpommo" 
                         target="_blank" 
@@ -248,7 +247,7 @@ export function Home() {
               What We Build
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Chrome extensions, AI assistants, and single-page applications designed to make your digital life easier
+              Chrome extensions, AI assistants, and single-page applications designed to streamline your workflow.
             </p>
           </motion.div>
           <motion.div 

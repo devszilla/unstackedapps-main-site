@@ -183,20 +183,4 @@
     font-size: 12px;
     margin-top: -4px;
   }
-
-  /* Responsive adjustments */
-  @media (max-width: 640px) {
-    .brand-name {
-      font-size: 24px;
-    }
-    .brand-subtitle {
-      font-size: 12px;
-    }
-    .brand-logo {
-      height: 32px;
-    }
-    .brand-container {
-      height: 32px;
-    }
-  }
 }
