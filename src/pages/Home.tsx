@@ -146,7 +146,11 @@ export function Home() {
               <Card className="hover:shadow-lg transition-shadow flex flex-col h-full">
                 <CardHeader className="flex-1">
                   <div className="flex items-center gap-3 mb-4">
-                    <Chrome className="h-8 w-8 text-primary" />
+                    <img 
+                      src="/suitepreferences.png" 
+                      alt="SuitePreferences" 
+                      className="h-8 w-8 object-contain"
+                    />
                     <CardTitle className="text-2xl">SuitePreferences</CardTitle>
                   </div>
                   <CardDescription className="text-base min-h-[3rem]">
@@ -178,7 +182,11 @@ export function Home() {
               <Card className="hover:shadow-lg transition-shadow flex flex-col h-full">
                 <CardHeader className="flex-1">
                   <div className="flex items-center gap-3 mb-4">
-                    <Sparkles className="h-8 w-8 text-primary" />
+                    <img 
+                      src="/opensuitemcp.svg" 
+                      alt="OpenSuiteMCP" 
+                      className="h-8 w-8 object-contain"
+                    />
                     <CardTitle className="text-2xl">OpenSuiteMCP</CardTitle>
                   </div>
                   <CardDescription className="text-base min-h-[3rem]">
@@ -212,7 +220,11 @@ export function Home() {
               <Card className="hover:shadow-lg transition-shadow flex flex-col h-full">
                 <CardHeader className="flex-1">
                   <div className="flex items-center gap-3 mb-4">
-                    <Globe className="h-8 w-8 text-primary" />
+                    <img 
+                      src="/logo.svg" 
+                      alt="Unstacked Apps" 
+                      className="h-8 w-8 object-contain"
+                    />
                     <CardTitle className="text-2xl">This Website</CardTitle>
                   </div>
                   <CardDescription className="text-base min-h-[3rem]">

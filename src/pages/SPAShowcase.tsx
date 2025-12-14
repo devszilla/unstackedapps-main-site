@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dialog"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DatePicker } from "@/components/ui/date-picker"
-import { ArrowLeft, Users, FileText, Briefcase, GraduationCap, Linkedin, Github, UserPlus, Download, Save, X, Mail, Phone, Edit, Trash2, User, Filter, ArrowUpDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Columns } from "lucide-react"
+import { ArrowLeft, Users, FileText, Briefcase, GraduationCap, Linkedin, Github, UserPlus, Download, Save, X, Mail, Phone, Edit, Trash2, User, Filter, ArrowUpDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Columns, ExternalLink } from "lucide-react"
 import { Link } from "react-router-dom"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { MobileMenu } from "@/components/MobileMenu"
@@ -215,7 +215,19 @@ export function SPAShowcase() {
       >
         <div className="mx-auto max-w-6xl">
           {selectedSPA === "user-management" && <UserManagementSPA />}
-          {selectedSPA === "professional-resume" && <ProfessionalResumeSPA />}
+          {selectedSPA === "professional-resume" && (
+            <div className="relative">
+              <Link 
+                to="/resume-demo" 
+                className="absolute top-4 right-4 z-10 flex items-center gap-2 px-3 py-2 rounded-md bg-background border border-border hover:bg-muted transition-colors text-sm"
+              >
+                <ExternalLink className="h-4 w-4" />
+                <span className="hidden sm:inline">View Full Example</span>
+                <span className="sm:hidden">Full</span>
+              </Link>
+              <ProfessionalResumeSPA />
+            </div>
+          )}
         </div>
       </motion.section>
     </div>
@@ -1344,7 +1356,7 @@ function ProfessionalResumeSPA() {
         <CardContent className="pt-6">
         <div className="space-y-6">
           <div className="text-left sm:text-center border-b pb-4 sm:pb-6 relative">
-            <div className="absolute top-0 right-0 sm:right-4">
+            <div className="absolute top-14 right-0 sm:top-0 sm:left-4 sm:right-auto">
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-border overflow-hidden">
                 <img 
                   src="/sample_profile.png" 
@@ -1354,7 +1366,7 @@ function ProfessionalResumeSPA() {
                 />
               </div>
             </div>
-            <div className="mb-3 sm:mb-4">
+            <div className="mb-3 sm:mb-4 pr-24 sm:pr-0">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">John Doe</h2>
               <p className="text-sm sm:text-base text-muted-foreground">Senior Software Engineer</p>
             </div>
