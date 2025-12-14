@@ -7,19 +7,16 @@ import { MobileMenu } from "@/components/MobileMenu"
 import { technologiesByCategory } from "@/config/technologies"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { HeroGeometric } from "@/components/ui/shadcn-io/shape-landing-hero"
+import { useEffect, useRef } from "react"
 
 // Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-}
-
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.15
     }
   }
 }
@@ -29,20 +26,38 @@ const cardVariants = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.5 }
+    transition: { duration: 0.8 }
   }
 }
 
 export function Home() {
+  const navRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (navRef.current) {
+        const height = navRef.current.offsetHeight
+        document.documentElement.style.setProperty('--header-height', `${height}px`)
+      }
+    }
+
+    updateHeaderHeight()
+    window.addEventListener('resize', updateHeaderHeight)
+    
+    return () => window.removeEventListener('resize', updateHeaderHeight)
+  }, [])
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Navigation */}
       <motion.nav 
-        className="container mx-auto px-4 py-6"
+        ref={navRef}
+        className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/80 border-b border-border/10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.7 }}
       >
+        <div className="container mx-auto px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="brand-wrapper">
             <img 
@@ -72,44 +87,24 @@ export function Home() {
             <MobileMenu />
           </div>
         </div>
+        </div>
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
-        <motion.div 
-          className="mx-auto max-w-3xl"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.h1 
-            className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl"
-            variants={fadeInUp}
-          >
-            Apps. AI.
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {" "}Open Source.
-            </span>
-          </motion.h1>
-          <motion.p 
-            className="mt-6 text-lg text-muted-foreground sm:text-xl"
-            variants={fadeInUp}
-          >
-            Chrome extensions, AI assistants, single-page applications and end-to-end integrations. Built with modern tools and open source technologies.
-          </motion.p>
-          <motion.div 
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center items-center"
-            variants={fadeInUp}
-          >
-            <Button size="lg" className="text-lg w-auto" asChild>
-              <a href="#projects">Explore Our Projects</a>
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg w-auto" asChild>
-              <a href="#features">Learn More</a>
-            </Button>
-          </motion.div>
-        </motion.div>
-      </section>
+      <HeroGeometric
+        title1="Apps. AI."
+        title2="Open Source."
+        description="Chrome extensions, AI assistants, single-page applications and end-to-end integrations. Built with modern tools and open source technologies."
+      >
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center items-center">
+          <Button size="lg" className="text-lg w-auto" asChild>
+            <a href="#projects">Explore Our Projects</a>
+          </Button>
+          <Button size="lg" variant="outline" className="text-lg w-auto" asChild>
+            <a href="#features">Learn More</a>
+          </Button>
+        </div>
+      </HeroGeometric>
 
       {/* Projects Section */}
       <section id="projects" className="container mx-auto px-4 py-20">
@@ -119,7 +114,7 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Projects
@@ -241,7 +236,7 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               What We Build
@@ -335,7 +330,7 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Technologies We Use
@@ -385,7 +380,7 @@ export function Home() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.9 }}
         >
           <Card className="border-2">
             <CardHeader className="text-center">
@@ -410,7 +405,7 @@ export function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8">
+      <footer className="border-t border-border/10 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <Link to="/" className="brand-wrapper">

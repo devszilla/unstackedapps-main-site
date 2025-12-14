@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -63,6 +64,12 @@ function getCurrentDateTime(): string {
   return formatDateTime(new Date())
 }
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+}
+
 export function SPAShowcase() {
   const [selectedSPA, setSelectedSPA] = useState<SPAType>("user-management")
   
@@ -77,7 +84,12 @@ export function SPAShowcase() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Navigation */}
-      <nav className="container mx-auto px-4 py-4 sm:py-6">
+      <motion.nav 
+        className="container mx-auto px-4 py-3 sm:py-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="brand-wrapper flex-shrink-0">
             <img 
@@ -115,22 +127,42 @@ export function SPAShowcase() {
             </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Header */}
-      <section className="container mx-auto px-4 py-8 sm:py-12">
+      <motion.section 
+        className="container mx-auto px-4 py-8 sm:py-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <motion.h1 
+            className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
             SPA Examples
-          </h1>
-          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground px-2">
+          </motion.h1>
+          <motion.p 
+            className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground px-2"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+          >
             Interactive examples of single-page applications
-          </p>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
 
       {/* SPA Selector */}
-      <section className="container mx-auto px-4 pb-6 sm:pb-8">
+      <motion.section 
+        className="container mx-auto px-4 pb-6 sm:pb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
         <div className="mx-auto max-w-4xl flex flex-col items-center gap-4">
           <Tabs 
             value={selectedSPA} 
@@ -150,21 +182,32 @@ export function SPAShowcase() {
               </TabsTrigger>
             </TabsList>
           </Tabs>
-          <p className="text-sm sm:text-base text-muted-foreground text-center max-w-2xl">
+          <motion.p 
+            key={selectedSPA}
+            className="text-sm sm:text-base text-muted-foreground text-center max-w-2xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             {selectedSPA === "user-management" 
               ? "Manage users with inline editing, search, and export capabilities"
               : "Responsive résumé layout optimized for all screen sizes"}
-          </p>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
 
       {/* SPA Content */}
-      <section className="container mx-auto px-4 pb-20">
+      <motion.section 
+        className="container mx-auto px-4 pb-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+      >
         <div className="mx-auto max-w-6xl">
           {selectedSPA === "user-management" && <UserManagementSPA />}
           {selectedSPA === "professional-resume" && <ProfessionalResumeSPA />}
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }
@@ -791,8 +834,13 @@ function UserManagementSPA() {
         </DialogContent>
       </Dialog>
 
-      <Card>
-        <CardContent className="pt-6">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Card>
+          <CardContent className="pt-6">
           <div className="space-y-4">
             {/* Action bar - improved mobile layout */}
             <div className="flex flex-col gap-3">
@@ -1270,14 +1318,20 @@ function UserManagementSPA() {
         </div>
       </CardContent>
     </Card>
+      </motion.div>
     </>
   )
 }
 
 function ProfessionalResumeSPA() {
   return (
-    <Card>
-      <CardContent className="pt-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <Card>
+        <CardContent className="pt-6">
         <div className="space-y-6">
           <div className="text-left sm:text-center border-b pb-4 sm:pb-6 relative">
             <div className="absolute top-0 right-0 sm:right-4">
@@ -1379,6 +1433,7 @@ function ProfessionalResumeSPA() {
         </div>
       </CardContent>
     </Card>
+      </motion.div>
   )
 }
 
