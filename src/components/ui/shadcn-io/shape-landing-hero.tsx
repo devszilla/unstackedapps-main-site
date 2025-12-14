@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { LogoCarousel } from "@/components/LogoCarousel";
 type ElegantShapeProps = {
   className?: string;
   delay?: number;
@@ -180,6 +181,15 @@ export function HeroGeometric({
               {children}
             </motion.div>
           )}
+          <motion.div
+            custom={3}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="mt-12 md:mt-16"
+          >
+            <LogoCarousel />
+          </motion.div>
         </div>
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/80 pointer-events-none" />
