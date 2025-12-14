@@ -162,7 +162,7 @@
     font-family: "Inter", sans-serif;
     font-size: 30px;
     font-weight: 700;
-    background: linear-gradient(to bottom, hsl(var(--foreground)), hsl(var(--foreground) / 0.4));
+    background: linear-gradient(to right, hsl(var(--foreground)), hsl(var(--foreground) / 0.4));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

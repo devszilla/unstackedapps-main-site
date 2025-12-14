@@ -116,7 +116,7 @@ export function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/40">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/60 to-foreground/30">
               Projects
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -238,7 +238,7 @@ export function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/40">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/60 to-foreground/30">
               What We Build
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -332,7 +332,7 @@ export function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/40">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/60 to-foreground/30">
               Technologies We Use
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">

@@ -138,7 +138,7 @@ export function SPAShowcase() {
       >
         <div className="mx-auto max-w-4xl text-center">
           <motion.h1 
-            className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/40"
+            className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/60 to-foreground/30"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
