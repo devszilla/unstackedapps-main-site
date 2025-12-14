@@ -71,7 +71,7 @@ function ElegantShape({
 type HeroGeometricProps = {
   title1?: string;
   title2?: string;
-  description?: string;
+  description?: string | React.ReactNode;
   className?: string;
   children?: React.ReactNode;
 };
@@ -167,9 +167,13 @@ export function HeroGeometric({
             initial="hidden"
             animate="visible"
           >
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
-              {description}
-            </p>
+            <div className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
+              {typeof description === 'string' ? (
+                <p>{description}</p>
+              ) : (
+                description
+              )}
+            </div>
           </motion.div>
           {children && (
             <motion.div

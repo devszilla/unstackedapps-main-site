@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -24,6 +24,24 @@ const fadeInUp = {
 }
 
 export function ContactForm() {
+  // Prevent scroll restoration on page load
+  useEffect(() => {
+    // Set immediately
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+    // Force scroll to top multiple times to override browser restoration
+    window.scrollTo(0, 0)
+    // Use requestAnimationFrame to ensure it happens after browser restoration
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0)
+      // Also set on next frame for good measure
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0)
+      })
+    })
+  }, [])
+
   const [formData, setFormData] = useState({
     spaType: "",
     companySize: "",

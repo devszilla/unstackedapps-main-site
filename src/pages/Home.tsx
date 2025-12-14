@@ -94,7 +94,19 @@ export function Home() {
       <HeroGeometric
         title1="Apps. AI."
         title2="Open Source."
-        description="Chrome extensions, AI assistants, single-page applications and end-to-end integrations. Built with modern tools and open source technologies."
+        description={
+          <>
+            <p className="mb-3">
+              <span className="text-foreground font-medium">Chrome extensions</span>,{" "}
+              <span className="text-foreground font-medium">AI assistants</span>,{" "}
+              <span className="text-foreground font-medium">single-page applications</span> and{" "}
+              <span className="text-foreground font-medium">end-to-end integrations</span>.
+            </p>
+            <p className="text-muted-foreground/80">
+              Built with modern tools and open source technologies.
+            </p>
+          </>
+        }
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center items-center">
           <Button size="lg" className="text-lg w-auto" asChild>
@@ -149,11 +161,11 @@ export function Home() {
                     </div>
                     <Button asChild variant="outline" className="w-full sm:w-auto">
                       <a 
-                        href="https://chromewebstore.google.com/detail/suitepreferences/gdaohblaiiefllpkhpolbfeiacbpommo" 
+                        href="https://www.suitepreferences.com/" 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >
-                        Get from Chrome Web Store
+                        Visit Website
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </a>
                     </Button>
@@ -318,6 +330,20 @@ export function Home() {
                 </CardHeader>
               </Card>
             </motion.div>
+          </motion.div>
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <Button size="lg" className="text-lg" asChild>
+              <Link to="/contact">
+                <Mail className="mr-2 h-5 w-5" />
+                Get Started
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </section>
