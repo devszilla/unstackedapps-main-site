@@ -66,6 +66,14 @@ export function ContactForm() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [openFAQ, setOpenFAQ] = useState<string | null>(null)
 
+  // Clear domainDNSAccess if it's "not-applicable" and project type changes away from chrome-extension
+  useEffect(() => {
+    if (formData.projectType !== "chrome-extension" && formData.domainDNSAccess === "not-applicable") {
+      setFormData(prev => ({ ...prev, domainDNSAccess: "" }))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.projectType])
+
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
@@ -91,7 +99,8 @@ export function ContactForm() {
     }
     
     // Domain DNS access is only required for web-based projects (not Chrome extensions)
-    if (formData.projectType !== "chrome-extension" && !formData.domainDNSAccess) {
+    // Also reject "not-applicable" value for non-Chrome-extension projects
+    if (formData.projectType !== "chrome-extension" && (!formData.domainDNSAccess || formData.domainDNSAccess === "not-applicable")) {
       setSubmitStatus("error")
       setTimeout(() => setSubmitStatus("idle"), 3000)
       return
@@ -908,4 +917,3 @@ export function ContactForm() {
     </div>
   )
 }
-
